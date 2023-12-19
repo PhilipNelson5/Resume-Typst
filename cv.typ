@@ -1,25 +1,24 @@
 #import "utils.typ"
 
 // Load CV Data from YAML
-//#let info = yaml("cv.typ.yml")
+// #let info = yaml("cv.typ.yml")
 
 // Variables
-//#let headingfont = "Linux Libertine" // Set font for headings
-//#let bodyfont = "Linux Libertine"   // Set font for body
-//#let fontsize = 10pt // 10pt, 11pt, 12pt
-//#let linespacing = 6pt
+// #let headingfont = "Linux Libertine" // Set font for headings
+// #let bodyfont = "Linux Libertine"   // Set font for body
+// #let fontsize = 10pt // 10pt, 11pt, 12pt
+// #let linespacing = 6pt
 
-//#let showAddress = true // true/false Show address in contact info
-//#let showNumber = true  // true/false Show phone number in contact info
+// #let showAddress = true // true/false Show address in contact info
+// #let showNumber = true  // true/false Show phone number in contact info
 
 // set rules
 #let setrules(uservars, doc) = {
     set page(
         paper: "us-letter", // a4, us-letter
-        numbering: "1 / 1",
-        number-align: center, // left, center, right
-        margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
-    )
+        // numbering: "1 / 1",
+        // number-align: center, // left, center, right
+        margin: uservars.margin    )
 
     // Set Text settings
     set text(
@@ -37,6 +36,13 @@
     doc
 }
 
+// #let textlen(x) = {text(size:x*1pt)[hello]}
+
+#let make_heading(body) = style(styles => {
+    let size = measure(body, styles)
+    [#body #v(-size.height*2) #line(start: (size.width+5pt, 0pt), end: (7.5in, 0pt), stroke: 1pt + black)]
+})
+
 // show rules
 #let showrules(uservars, doc) = {
     // Uppercase Section Headings
@@ -45,8 +51,8 @@
     ): it => block(width: 100%)[
         #set align(left)
         #set text(font: uservars.headingfont, size: 1em, weight: "bold")
-        #upper(it.body)
-        #v(-0.75em) #line(length: 100%, stroke: 1pt + black) // Draw a line
+        #let title = upper(it.body)
+        #make_heading(title)
     ]
 
     // Name Title
@@ -73,7 +79,11 @@
 #let addresstext(info, uservars) = {
     if uservars.showAddress {
         block(width: 100%)[
-            #info.personal.location.city, #info.personal.location.region, #info.personal.location.country #info.personal.location.postalCode
+            #if ("country" in info.personal) {
+                block[#info.personal.location.city, #info.personal.location.region, #info.personal.location.country #info.personal.location.postalCode]
+            } else {
+                block[#info.personal.location.city, #info.personal.location.region #info.personal.location.postalCode]
+            }
             #v(-4pt)
         ]
     } else {none}
@@ -95,7 +105,7 @@
     #if info.personal.profiles.len() > 0 {
         for profile in info.personal.profiles {
             profiles.push(
-                box(link(profile.url)[#profile.url.split("//").at(1)])
+                box(link(profile.url)[#profile.network:\/\/#profile.username])
             )
         }
     }
@@ -134,9 +144,9 @@
                     *#edu.institution* #h(1fr) *#edu.location* \
                 ]
                 // Line 2: Degree and Date Range
-                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                #text(style: "italic")[#edu.studyType in #edu.area]
+                #if edu.honors != none [| #edu.honors.join(", ")] #h(1fr)
                 #start #sym.dash.en #end
-                #if edu.honors != none [- *Honors*: #edu.honors.join(", ")]
                 #if edu.courses != none [- *Courses*:  #edu.courses.join(", ")]
                 #if edu.highlights != none {for hi in edu.highlights [- #eval("[" + hi + "]")]}
             ]
@@ -173,10 +183,10 @@
 }
 
 // Leadership and Activities
-#let cvaffiliations(info, isbreakable: true) = {
-    if info.affiliations != none {block[
-        == Leadership & Activities
-        #for org in info.affiliations {
+#let cvservice(info, isbreakable: true) = {
+    if info.service != none {block[
+        == Leadership & Service
+        #for org in info.service {
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(org.startDate)
             let end = utils.strpdate(org.endDate)
@@ -270,12 +280,12 @@
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Institution and Location
                 #if cert.url != none [
-                    *#link(cert.url)[#cert.name]* \
+                    *#link(cert.url)[#cert.name]* |
                 ] else [
-                    *#cert.name* \
+                    *#cert.name* |
                 ]
                 // Line 2: Degree and Date Range
-                Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
+                Issued by #text(style: "italic")[#cert.issuer] #h(1fr) #date
             ]
         }
     ]}
@@ -307,13 +317,6 @@
 #let cvskills(info, isbreakable: true) = {
     if (info.languages != none) or (info.skills != none) or (info.interests != none) {block(breakable: isbreakable)[
         == Skills, Languages, Interests
-        #if (info.languages != none) [
-            #let langs = ()
-            #for lang in info.languages {
-                langs.push([#lang.language (#lang.fluency)])
-            }
-            - *Languages*: #langs.join(", ")
-        ]
         #if (info.skills != none) [
             #for group in info.skills [
                 - *#group.category*: #group.skills.join(", ")
@@ -321,6 +324,13 @@
         ]
         #if (info.interests != none) [
             - *Interests*: #info.interests.join(", ")
+        ]
+        #if (info.languages != none) [
+            #let langs = ()
+            #for lang in info.languages {
+                langs.push([#lang.language (#lang.fluency)])
+            }
+            - *Languages*: #langs.join(", ")
         ]
     ]}
 }

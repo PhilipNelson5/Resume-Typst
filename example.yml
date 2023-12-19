@@ -80,7 +80,7 @@ education:
       - "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow"
       - "*Activities*: Debating, Chess, Cricket"
 
-affiliations:
+service:
   - organization: White Hat Hackers Association
     position: Vice President for Internal Affairs
     location: Cambridge, United Kingdom

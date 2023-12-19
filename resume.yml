@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json
+
+personal:
+  name: Philip Nelson
+  email: PhilipNelson5@gmail.com
+  phone: +1 925-239-5417
+  url: 
+  location:
+    city: Logan
+    region: Utah
+    postalCode: 84321
+    country: USA
+  profiles:
+    - network: LinkedIn
+      username: PhilipNelson5
+      url: https://www.linkedin.com/in/PhilipNelson5
+    - network: GitHub
+      username: PhilipNelson5
+      url: https://github.com/PhilipNelson5
+
+education:
+  - institution: Utah State University
+    url: https://usu.edu/
+    area: Computer Science
+    studyType: Masters of Computer Science
+    startDate: 2019-01-01
+    endDate: 2022-05-01
+    location: Logan, Utah
+    honors:
+      - 4.0 GPA
+    courses:
+    highlights:
+  - institution: Utah State University
+    url: https://usu.edu/
+    area: Computer Science and Computational Math
+    studyType: Bachelor of Science
+    startDate: 2012-06-01
+    endDate: 2019-05-01
+    location: Logan, Utah
+    honors:
+      - 3.7 GPA
+      - Cum Laude 
+    courses:
+    highlights:
+
+work:
+  - organization: Space Dynamics Laboratory
+    position: Software Engineer
+    url: https://www.sdl.usu.edu/
+    location: Logan, Utah
+    startDate: 2019-08-01
+    endDate: "present"
+    highlights:
+      - Developed CI/CD pipelines to build, scan, and deploy applications in 5+ languages # including static and dynamic analysis, code coverage, etc.
+      - Implemented a data fusion algorithm in C++, based on a python prototype, to produce real-time results from live data feeds
+      - Created a web based front end for a geospatial, data processing application with VueJs and CesiumJs
+      - Maintained and extended capabilities of satellite data processing pipeline and viewer in C++ with ZeroMQ and Qt
+
+  - organization: Space Dynamics Laboratory
+    position: Assistant Software Engineer
+    url: https://www.sdl.usu.edu/
+    location: Logan, Utah
+    startDate: 2018-09-01
+    endDate: 2019-08-01
+    highlights:
+      - Maintained a legacy application written in C++ and wxWidgets
+      - Implemented new features to support business needs and new abstractions around legacy code to increase developer productivity
+
+  - organization: Utah State University
+    position: Computer Science Tutor
+    url: https://www.usu.edu/cs/
+    location: Logan, Utah
+    startDate: 2017-01-01
+    endDate: 2019-08-01
+    highlights:
+      - Read and debugged code written by students seeking help while enabling them to identify and fix bugs on their own
+      - Taught computer science concepts and principles to other students
+
+  - organization: United States Air Force
+    position: Premiere College Internship Program (PCIP) Intern
+    url: https://www.usu.edu/cs/
+    location: "Hill AFB, Ogden, Utah"
+    startDate: 2018-05-01
+    endDate: 2018-08-01
+    highlights:
+      - Worked with a group of six software engineers, in C\#, to develop the GPS Common Component of the Joint Mission Planning System
+
+  - organization: Utah NASA Space Grant Consortium
+    position: Fellow
+    url: https://www.utahspacegrant.com/
+    location: Logan, Utah
+    startDate: 2017-06-01
+    endDate: 2017-08-01
+    highlights:
+      - Developed software to aid in high altitude balloon launches which was used to calculate required balloon lift at launch
+      - Implemented an open source SPA architecture for cubesat flight software (Cubium)
+      - Demonstrated Cubium's inter-process, UDP socket communication at the Small Sat Conference in Logan, Utah
+
+service:
+  - organization: AmeriCorps
+    position: VISTA Summer Associate
+    location: Logan, Utah
+    url: https://americorps.gov/serve/americorps/americorps-vista
+    startDate: 2017-05-01
+    endDate: 2017-08-01
+    highlights:
+      - Provided free summer camps for Hispanic youth in STEM fields and coordinated with local schools to provide free lunch to campers
+      - Coordinated two six-week camps serving 23 local youth
+  - organization: Community Service Organization
+    position: Volunteer
+    location: Rio Grande do Sul, Brazil
+    url:
+    startDate: 2014-05-01
+    endDate: 2016-04-01
+    highlights:
+      - Supervised up to 10 volunteers, helped them establish goals, and tracked results 
+      - Developed strong communication skills while presenting programs to the public that promoted behavioral and life style changes
+      - Offered community service and participated in charity work including distributing aid materials after natural disasters
+
+awards:
+  - title: "President's Volunteer Service Award: Silver"
+    date: 2017-08-01
+    issuer: The President of the United States
+    url: https://presidentialserviceawards.gov/
+    location: Logan, Utah
+    highlights:
+      - Awarded for 400 hours of community service
+
+certificates:
+  - name: Security+
+    date: 2023-02-01
+    issuer: CompTIA
+    url: https://www.credly.com/badges/a6c70462-74ea-4371-8668-645d4fa567e0
+  - name: "Amateur Radio - Technician: KI7PAH"
+    date: 2017-07-24
+    issuer: the FCC
+    url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp;?licKey=3942035
+
+publications:
+  # - name:
+  #   publisher:
+  #   releaseDate:
+  #   url:
+
+projects:
+  # - name: USU Get Away Special (GAS) Team
+  #   url: https://www.usu.edu/physics/gas/
+  #   affiliation: Utah State University
+  #   startDate: 2016-06-01
+  #   endDate: 2019-05-01
+  #   highlights:
+  #     - Developed C++ and Python code for Linux-based CubeSat flight software in a team of 5 students
+  #     - Launched and recovered high altitude balloons with an interdisciplinary team of 20 students, while maintaining communication with payloads using radios
+  #     - Utilized HAM Radio to track prototype payloads and coordinate recovery efforts
+
+skills:
+  - category: Programming
+    skills:
+      - C++
+      - Python
+      - JavaScript / TypeScript
+      - SQL / PostgreSQL
+      - Bash Script
+  - category: Tools
+    skills:
+      - Git
+      - GitLab Pipelines
+      - Linux
+      - Docker
+      - Vim & VS Code
+      - LaTeX
+  # - category: Soft Skills
+  #   skills:
+  #     - Public Speaking
+  #     - Debating
+  #     - Communication
+  #     - Critical Thinking
+  #     - Leadership
+  #     - Persuasive Writing
+  #     - Technical Writing
+
+languages:
+  - language: English
+    fluency: Native speaker
+  - language: Portuguese
+    fluency: Proficient
+
+interests:
+  # - 
+
+references:
+  # - name: 
+  #   reference: 
+  #   url: 

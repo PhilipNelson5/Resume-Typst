@@ -631,10 +631,10 @@
                 ]
             ]
         },
-        "affiliations": {
+        "service": {
             "type": "array",
             "default": [],
-            "title": "The affiliations Schema",
+            "title": "The Service Schema",
             "items": {
                 "type": "object",
                 "title": "A Schema",

@@ -1,15 +1,19 @@
 #import "cv.typ": *
 
 // Load CV data from YAML
-#let cvdata = yaml("example.yml")
+#let cvdata = yaml("resume.yml")
 
 #let uservars = (
     headingfont: "Linux Libertine", // Set font for headings
     bodyfont: "Linux Libertine",   // Set font for body
-    fontsize: 10pt, // 10pt, 11pt, 12pt
+    fontsize: 10pt,
+    margin: (
+        x: 1.25cm,
+        y: 1cm
+    ),
     linespacing: 6pt,
-    showAddress: true, // true/false Show address in contact info
-    showNumber: true,  // true/false Show phone number in contact info
+    showAddress: false, // Show address in contact info
+    showNumber: true,  // Show phone number in contact info
 )
 
 // setrules and showrules can be overridden by re-declaring it here
@@ -45,10 +49,10 @@
 #cvwork(cvdata)
 #cvservice(cvdata)
 #cvprojects(cvdata)
-#cvawards(cvdata)
 #cvcertificates(cvdata)
 #cvpublications(cvdata)
 #cvskills(cvdata)
+#cvawards(cvdata)
 #cvreferences(cvdata)
 
 #endnote
